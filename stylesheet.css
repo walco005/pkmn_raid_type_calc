@@ -1,0 +1,88 @@
+html { font-size: 16px; }
+body { padding: 1rem; }
+
+
+
+/*
+#normal {
+    background-color: gainsboro;
+}
+#fire {
+    background-color:orange;
+}
+*/
+
+.typeButton {
+    background-color:aqua;
+    color: white;
+    padding: 1rem;
+    height: 1em;
+    border-radius:10px;
+    font-family:"Fira Sans","Trebuchet MS",Ubuntu,Helvetica,Arial,sans-serif;
+    text-shadow:1px 1px 2px rgba(0,0,0,0.7);
+    text-align:center;
+}
+
+.typeButtons {
+    max-width:1000px;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.clicked {
+    background-color: greenyellow;
+}
+.fourTimes {
+    background-color: lawngreen;
+}
+.twoTimes {
+    background-color: lightgreen;
+}
+.oneTimes {
+    background-color: lightgray;
+}
+.halfTimes {
+    background-color: yellow;
+}
+.quarterTimes {
+    background-color: orangered;
+}
+.zeroTimes {
+    background-color: black;
+    color: white;
+}
+
+#type1 {
+    float: left;
+    width: 50%;
+    background-color: aqua;
+}
+
+#type1Head {
+    height: 1em;
+    background-color: lightgreen;
+    border-bottom: 5px;
+}
+#type2Head {
+    height: 1em;
+    background-color: lightcoral;
+}
+
+#type2 {
+    float: left;
+    width: 50%;
+    background-color: antiquewhite;
+}
+
+#typeChart {
+    margin-top: 30px;
+}
+/*
+@media (min-width: 600px) {
+  .typeButtons { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .typeButtons { grid-template-columns: repeat(6, 1fr); }
+}*/
