@@ -34,6 +34,8 @@ $(document).ready(function() {
             } else {
                 $(this).addClass("clicked");
             }
+        } else if (type1 && type2) {
+            $(this).removeClass('clicked');
         }
         var clickedType = $(this).attr('id');
         if(type1 == clickedType) {

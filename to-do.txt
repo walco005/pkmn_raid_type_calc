@@ -1,6 +1,3 @@
-1. Fix the bugs with button selection
-    -Currently there's issues regarding the class staying on even though it gets clicked
-    
 2. Option to sort types by effectiveness & switch back to default sorting
 
 3. CSS Fix Stuff
@@ -10,3 +7,8 @@
         *Maybe adding icons for each type in?
         
 4. Whatever I'm forgetting
+
+
+DONE:
+
+1. Fix the bugs with button selection
