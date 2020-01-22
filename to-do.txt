@@ -1,14 +1,21 @@
 2. Option to sort types by effectiveness & switch back to default sorting
 
 3. CSS Fix Stuff
-    -Buttons colored as their types
+    
     -Trying to click a 3rd button results in the button flashing red?
     -Making the type things look nicer. 
         *Maybe adding icons for each type in?
         
-4. Whatever I'm forgetting
+4. Trim type name based on button width
+    -On a computer it'd be full name, on a phone it'd show just the 3 letters. 
+
+5. Refactor this junk
+    -Have consistent quotes ya goofball
 
 
 DONE:
 
 1. Fix the bugs with button selection
+
+3. CSS Fix Stuff
+    -Buttons colored as their types

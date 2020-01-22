@@ -6,7 +6,7 @@ var typeEffArr = [
     [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2, 1], //Fire
     [1, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5, 1, 1, 1], //Water
     [1, 1, 2, 0.5, 0.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 0.5, 1, 1, 1], //Electric
-    [0, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 0.5, 1, 0.5, 1], //Grass
+    [1, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 0.5, 1, 0.5, 1], //Grass
     [1, 0.5, 0.5, 1, 2, 0.5, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 0.5, 1], //Ice
     [2, 1, 1, 1, 1, 2, 1, 0.5, 1, 0.5, 0.5, 0.5, 2, 0, 1, 2, 2, 0.5], //Fighting
     [1, 1, 1, 1, 2, 1, 1, 0.5, 0.5, 1, 1, 1, 0.5, 0.5, 1, 1, 0, 2], //Poison
@@ -21,23 +21,24 @@ var typeEffArr = [
     [1, 0.5, 0.5, 0.5, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0.5, 2], //Steel
     [1, 0.5, 1, 1, 1, 1, 2, 0.5, 1, 1, 1, 1, 1, 1, 2, 2, 0.5, 1] //Fairy
 ];
+var flashInterval;
 
 $(document).ready(function() {
     
     initializeTypeDivs();
     
     $('.typeButton').click(function() {
-        
+        var clickedType = $(this).attr('id');
         if(!(type1 && type2)) {
-            if($(this).hasClass("clicked")) {
-               $(this).removeClass("clicked");
-            } else {
-                $(this).addClass("clicked");
-            }
+            $(this).toggleClass('clicked');
         } else if (type1 && type2) {
             $(this).removeClass('clicked');
+            flashInterval = setInterval(function () {
+                $(this).toggleClass('errorBorder');
+            }, 1000);
+            clearInterval(flashInterval);
+            $(this).removeClass('errorBorder');
         }
-        var clickedType = $(this).attr('id');
         if(type1 == clickedType) {
             type1 = '';
         } else if (type2 == clickedType) {
@@ -47,15 +48,6 @@ $(document).ready(function() {
         } else if (type2 == '') {
             type2 = clickedType;
         }
-        
-//        var defArr = calcDualDef(type1, type2);
-//        
-//        var i;
-//        if(type1 && type2) {
-//            for(i = 0; i < defArr.length; i++) {
-//                alert(defArr[i]);
-//            }
-//        }
         for (i = 0; i < typeRefArr.length; i++) {
             $('#' + typeRefArr[i] + 'Def').text(typeRefArr[i]);
             $('#' + typeRefArr[i] + 'Def').removeClass();
@@ -73,6 +65,7 @@ $(document).ready(function() {
             populateTypeAtt(calcSingleAtt(type2));
         }
     });
+    
     
 });
 
@@ -147,7 +140,7 @@ function calcSingleAtt (t1) {
     var index = typeRefArr.indexOf(t1);
     var i;
     for(i = 0; i < typeRefArr.length; i++) {
-        retArr.push(typeEffArr[i][index]);
+        retArr.push(typeEffArr[index][i]);
     }
     return retArr;
 }
@@ -157,7 +150,7 @@ function calcDualAtt (t1, t2) {
     var index2 = typeRefArr.indexOf(t2);
     var i;
     for(i = 0; i < typeRefArr.length; i++) {
-        retArr.push(typeEffArr[i][index1] * typeEffArr[i][index2]);
+        retArr.push(typeEffArr[index1][i] * typeEffArr[index2][i]);
     }
     return retArr;
 }
